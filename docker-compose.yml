@@ -1,0 +1,21 @@
+
+version: '3.8'
+
+services:
+  beammp:
+    build:
+      context: ./beammp  # Especifica la carpeta 'beammp' para el contexto de la construcción
+      dockerfile: Dockerfile  # Asegura que use el Dockerfile de la carpeta 'beammp'
+    volumes:
+      - ./server:/beammp  # Monta la carpeta local './server' en el contenedor en /beammp
+    environment:
+      - BEAMMP_KEY=your_key_here  # Variable de entorno para la clave del servidor
+      - BEAMMP_MAP=your_map_here  # Variable de entorno para el mapa
+    ports:
+      - "30814:30814"  # Exponer el puerto 30814 para UDP y TCP
+    restart: always  # Reiniciar el contenedor automáticamente si se detiene
+    container_name: beammp-server  # Nombre del contenedor
+
+networks:
+  beammp_network:  # Definir una red personalizada
+    driver: bridge  # Usar el controlador predeterminado de Docker
