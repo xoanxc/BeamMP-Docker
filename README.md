@@ -1,2 +1,2 @@
 # BeamMP-Docker
-Imagen de Docker de BeamMP
+Imagen de Docker de BeamMP (en construcción)
